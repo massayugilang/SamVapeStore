@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sam Vape Store â€“ Premium Vape Devices & Liquids. Toko vape online terpercaya." />
+  <title>Sam Vape Store</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="about.css" />
+</head>
+
+<body>
+  <div id="loader">
+    <div class="l-logo">SAM VAPE</div>
+    <div class="l-bar">
+      <div class="l-fill"></div>
+    </div>
+  </div>
+
+  <nav>
+    <div class="logo">SAM VAPE STORE</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="about.html" class="active">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="cart-btn" onclick="toggleCart()">
+        🛒 Cart <span class="cart-count" id="cartCount">0</span>
+      </div>
+      <div class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')">
+        ☰
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mob">
+    <a href="index.html">Home</a>
+    <a href="product.html">Product</a>
+    <a href="about.html" class="active">About Us</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- TENTANG -->
+  <div id="about us" class="page active">
+    <section>
+      <div class="about-grid">
+        <div class="about-jpeg-wrap">
+          <img src="images/gambar about us.jpg" alt="Sam Vape Store" class="about-img" />
+        </div>
+        <div class="about-text">
+          <h2>
+            ABOUT US
+            <span style="
+                  background: linear-gradient(90deg, var(--neon), var(--neon2));
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                ">SAM VAPE</span>
+          </h2>
+          <p>
+            Didirikan tahun 2020, Sam Vape Store hadir sebagai destinasi utama
+            para vaper yang menginginkan produk premium berkualitas tinggi
+            dengan harga terjangkau.
+          </p>
+          <p>
+            Kami berkomitmen untuk hanya menyediakan produk original dan
+            bergaransi resmi dari brand-brand ternama dunia seperti SMOK,
+            Vaporesso, Lost Vape, dan lainnya.
+          </p>
+          <p style="color: var(--neon); letter-spacing: 1px">
+            <strong>Misi kami:</strong> Memberikan pengalaman vaping terbaik
+            melalui produk premium dan layanan pelanggan yang luar biasa.
+          </p>
+          <ul class="feat-list">
+            <li>100% Produk Original & Bergaransi Resmi</li>
+            <li>500+ Varian Liquid dari Brand Terpercaya</li>
+            <li>Pengiriman ke Seluruh Indonesia</li>
+            <li>Customer Service Responsif 7 Hari</li>
+            <li>Harga Kompetitif & Program Loyalty</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="f-logo">SAM VAPE STORE</div>
+    <p>PREMIUM VAPE DEVICES & LIQUIDS</p>
+    <p style="margin-top: 8px">
+      ©️ 2026 Sam Vape Store · Palembang, Indonesia
+    </p>
+    <p style="margin-top: 6px; font-size: 0.75rem; color: #444">
+      ⚠️ Produk ini hanya untuk konsumen dewasa berusia 18 tahun ke atas.
+    </p>
+  </footer>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <h2>🛒 CART</h2>
+      <span class="cart-close" onclick="toggleCart()">✖</span>
+    </div>
+    <div id="cartItems">
+      <div class="cart-empty">CART EMPTY</div>
+    </div>
+    <div class="cart-total" id="cartTotal" style="display: none">
+      TOTAL <span id="totalPrice">Rp 0</span>
+    </div>
+    <div id="checkoutBtn" style="display: none; margin-top: 16px">
+      <button class="btn btn-neon" style="width: 100%; text-align: center; display: block" onclick="openCheckout()">
+        CHECKOUT SEKARANG
+      </button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkoutModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🛍️ CHECKOUT</h2>
+        <span class="close-modal" onclick="closeCheckout()">✖</span>
+      </div>
+      <div id="checkoutBody">
+        <form id="checkoutForm" onsubmit="processOrder(event)">
+          <div class="form-group">
+            <label>NAMA PENERIMA</label>
+            <input type="text" id="custName" required placeholder="Nama Lengkap">
+          </div>
+          <div class="form-group">
+            <label>NOMOR WHATSAPP</label>
+            <input type="tel" id="custPhone" required placeholder="0812...">
+          </div>
+          <div class="form-group">
+            <label>ALAMAT LENGKAP</label>
+            <textarea id="custAddress" required placeholder="Jl. Example No. 123..."></textarea>
+          </div>
+
+          <div class="payment-methods">
+            <label>METODE PEMBAYARAN</label>
+            <div class="pay-options">
+              <label class="pay-opt">
+                <input type="radio" name="payment" value="BCA" checked>
+                <span>TF BCA</span>
+              </label>
+              <label class="pay-opt">
+                <input type="radio" name="payment" value="DANA">
+                <span>DANA</span>
+              </label>
+              <label class="pay-opt">
+                <input type="radio" name="payment" value="GOPAY">
+                <span>GOPAY</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="checkout-summary">
+            <div class="sum-row">
+              <span>Total Belanja:</span>
+              <span id="sumTotal">Rp 0</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-neon" style="width: 100%; margin-top: 20px;">
+            KONFIRMASI PEMESANAN
+          </button>
+        </form>
+      </div>
+
+      <!-- SUCCESS SCREEN -->
+      <div id="successScreen" style="display: none; text-align: center; padding: 20px 0;">
+        <div style="font-size: 3rem; margin-bottom: 15px;">✅</div>
+        <h3 style="color: var(--neon); margin-bottom: 10px;">PESANAN BERHASIL!</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 20px;">Silakan transfer sesuai detail di bawah ini:</p>
+
+        <div class="transfer-info">
+          <p id="payMethodName">BCA (777218312)</p>
+          <p>A/N: <strong>SAM VAPE STORE</strong></p>
+          <div class="total-pay" id="finalTotal">Rp 0</div>
+        </div>
+
+        <!-- RECEIPT SECTION -->
+        <div class="receipt-card" id="orderReceipt">
+          <div class="receipt-header">
+            <div>INVOICE</div>
+            <div id="receiptId">#INV-000000</div>
+          </div>
+          <div class="receipt-line"></div>
+          <div class="receipt-row">
+            <span>Tanggal:</span>
+            <span id="receiptDate">22 April 2026</span>
+          </div>
+          <div class="receipt-row">
+            <span>Nama:</span>
+            <span id="receiptName">-</span>
+          </div>
+          <div class="receipt-row">
+            <span>WA:</span>
+            <span id="receiptPhone">-</span>
+          </div>
+          <div class="receipt-line"></div>
+          <div id="receiptItems">
+          </div>
+          <div class="receipt-line"></div>
+          <div class="receipt-row total">
+            <span>TOTAL:</span>
+            <span id="receiptTotal">Rp 0</span>
+          </div>
+          <div class="receipt-footer">
+            SIMPAN RESI INI SEBAGAI BUKTI PEMBELIAN
+          </div>
+        </div>
+
+        <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">
+          Kirim bukti transfer ke admin kami via WA setelah membayar.
+        </p>
+        <button class="btn btn-outline" onclick="location.reload()" style="margin-top: 20px; width: 100%;">
+          KEMBALI KE BERANDA
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

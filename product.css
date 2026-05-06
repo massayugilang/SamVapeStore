@@ -1,0 +1,124 @@
+/* PRODUCT CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+.prod-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: 0.35s;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  max-width: 320px;
+  width: 100%;
+}
+
+.prod-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(0, 212, 255, 0.05),
+      rgba(123, 47, 255, 0.05));
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.prod-card:hover {
+  border-color: var(--neon);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.15);
+}
+
+.prod-card:hover::before {
+  opacity: 1;
+}
+
+.prod-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #0d0d1a;
+  padding: 15px;
+  filter: brightness(0.8) saturate(1.2);
+  transition: 0.4s;
+}
+
+.prod-card:hover img {
+  filter: brightness(0.95) saturate(1.4);
+}
+
+.prod-body {
+  padding: 18px;
+}
+
+.cat-tag {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--neon);
+  margin-bottom: 6px;
+  font-family: "Orbitron";
+}
+
+.prod-body h3 {
+  font-family: "Orbitron";
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.prod-body p {
+  color: var(--gray);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.prod-price {
+  font-family: "Orbitron";
+  font-size: 1.1rem;
+  color: var(--neon);
+  margin-bottom: 14px;
+}
+
+.prod-price span {
+  font-size: 0.7rem;
+  color: var(--gray);
+  font-family: "Rajdhani";
+}
+
+/* FILTER TABS */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.tab {
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  color: #888;
+  cursor: pointer;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: 0.3s;
+  font-family: "Rajdhani";
+  background: none;
+}
+
+.tab:hover,
+.tab.active {
+  border-color: var(--neon);
+  color: var(--neon);
+  background: rgba(0, 212, 255, 0.08);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+}
